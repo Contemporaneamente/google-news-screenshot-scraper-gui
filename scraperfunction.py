@@ -11,6 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 from PIL import Image
 from fpdf import FPDF
+import datetime
 #------COSTANTI------#
 #impostazione del motore di ricerca
 #lo script funziona bene su google e quindi è basato sulle 
@@ -68,6 +69,7 @@ def OpenBrowser(cQuery):
     #aggiungo l'opzione di non aprire effettivamente la finestra di chrome mentre funziona
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--log-level=OFF")
 
     #apro il browser
     driver = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
@@ -109,7 +111,7 @@ def TakeScreenshotForPage(wDriver, pLinks, inputString):
 
 
 #------CREAZIONE DEL PDF------#
-def CreatePdf():
+def CreatePdf(mainArgument):
     pdf = FPDF("P", "mm", (400, 800))
     w,h = 0,0
 
@@ -126,7 +128,10 @@ def CreatePdf():
         pdf.add_page()
         pdf.image(image,0,0,w,h)
         
-    pdf.output("output.pdf")
+    todayDate = datetime.date.today()
+    todayDateString = todayDate.strftime("%A, %d %b %Y")
+    
+    pdf.output(f"{todayDateString}_{mainArgument}.pdf")
 #------CREAZIONE DEL PDF------#
 
 

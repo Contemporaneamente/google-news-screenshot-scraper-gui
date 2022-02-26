@@ -3,6 +3,7 @@
 # https://github.com/ParthJadhav/Tkinter-Designer
 
 
+from doctest import master
 from pathlib import Path
 
 # from tkinter import *
@@ -22,7 +23,8 @@ window = Tk()
 
 window.geometry("400x600")
 window.configure(bg = "#FFFFFF")
-
+window.title("Google News Scraper")
+window.iconbitmap("icon.ico")
 
 canvas = Canvas(
     window,
@@ -115,7 +117,7 @@ def MakeSearch():
         webDriver = sf.OpenBrowser(queryString)
 
         sf.TakeScreenshotForPage(webDriver, pagesLinks, inputString)
-        sf.CreatePdf()
+        sf.CreatePdf(search)
     
     print("Processo concluso")
 
