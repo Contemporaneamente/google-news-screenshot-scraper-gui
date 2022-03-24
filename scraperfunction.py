@@ -97,7 +97,6 @@ def OpenBrowser(cQuery):
     return driver
 #------GOOGLE SEARCH PARSING------#
 
-
 #------SCREENSHOTS TIMEEEE------#
 def TakeScreenshotForPage(wDriver, pLinks, inputString):
     i = 1
@@ -108,7 +107,6 @@ def TakeScreenshotForPage(wDriver, pLinks, inputString):
         print("Screenshot: ", str(i), "/", str(len(pLinks)))
         i += 1       
 #------SCREENSHOTS TIMEEEE------#
-
 
 #------CREAZIONE DEL PDF------#
 def CreatePdf(mainArgument):
